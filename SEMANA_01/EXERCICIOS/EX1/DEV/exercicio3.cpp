@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-int Medida(int *v, int maxv, int posicao, int medida){
+int metrica(int *v, int maxv, int posicao, int medida){
     if(posicao < maxv){
         v[posicao] = medida;
         return posicao + 1;
@@ -16,7 +16,7 @@ int main(){
     int medida = 0;
     cout << "Digite a medida: ";
     cin >> medida;
-    atualvetor = Medida(vetorMov, vetormax, atualvetor, medida);
+    atualvetor = metrica(vetorMov, vetormax, atualvetor, medida);
     cout << "Posicao atual do vetor: " << atualvetor << endl;
     return 0;
 }

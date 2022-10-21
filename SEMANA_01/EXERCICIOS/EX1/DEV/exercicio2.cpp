@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-int leSensor(){
+int sensor(){
     int valor = 0;
     cout << "Digite o valor do sensor: ";
     cin >> valor;
@@ -10,7 +10,7 @@ int leSensor(){
 }
 int main(){
     int valor = 0;
-    valor = leSensor();
+    valor = sensor();
     cout << "Valor do sensor: " << valor << endl;
     return 0;
 }

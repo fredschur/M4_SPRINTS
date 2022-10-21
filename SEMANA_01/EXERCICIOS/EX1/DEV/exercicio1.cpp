@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-int converteSensor(int medida, int min, int max){
+int calcular(int medida, int min, int max){
     int valor = 0;
     valor = (medida - min) * 100 / (max - min);
     return valor;
@@ -16,6 +16,6 @@ int main () {
     std::cin >> min;
     std::cout << "Digite o valor maximo: ";
     std::cin >> max;
-    std::cout << "Valor convertido: " << converteSensor(medida, min, max) << std::endl;
+    std::cout << "Valor convertido: " << calcular(medida, min, max) << std::endl;
     return 0;
 }
