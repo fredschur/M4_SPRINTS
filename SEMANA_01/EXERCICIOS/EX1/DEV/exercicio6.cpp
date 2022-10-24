@@ -1,37 +1,26 @@
 #include <iostream>
 #include <string>
 using namespace std;
-// 6 - A função abaixo (que está incompleta) vai "dirigindo" virtualmente um robô 
-// e através de 4 sensores em cada um dos 4 pontos do robo ("Direita", "Esquerda", 
-// "Frente", "Tras"). 
-//      A cada passo, ele verifica as distâncias aos objetos e vai mapeando o terreno 
-// para uma movimentação futura. 
-//      Ele vai armazenando estas distancias em um vetor fornecido como parâmetro 
-// e retorna a ultima posicao preenchida do vetor.
-//      Esta função deve ir lendo os 4 sensores até que um comando de pare seja enviado 
-//
-//      Para simular os sensores e os comandos de pare, use as funções já construídas 
-// nos ítens anteriores e em um looping contínuo até que um pedido de parada seja 
-// enviado pelo usuário. 
-//
-//      Complete a função com a chamada das funções já criadas
+
 int dirige(int *v,int maxv){
 	int maxVetor = maxv;
 	int *vetorMov = v;
 	int atualvetor = 0;
 	int dirigindo = 1;		
-	while(dirigindo){		
-		int medida = /// .. Chame a função de de leitura da medida para a "Direita"
-		medida = converteSensor(medida,0,830);
-		atualvetor = 0;
-        // Chame a função para armazenar a medida no vetor
+	while(dirigindo == 1){		
+		for(int i=0; i < 4; i++){
+			int medida = sensor(); /// .. Chame a função de de leitura da medida para a "Direita"
+			medida = calcular(medida,0,830);
+		atualvetor = metrica(atualvetor, medida, vetorMov, maxVetor);
+		}
+		// Chame a função para armazenar a medida no vetor
         ///////////////////////////////////////////////////////////////////////////		
 		// Repita as chamadas acima para a "Esquerda", "Frente", "Tras"
 		// ................
 		///////////////////////////////////////////////////////////////////////////
-		dirigindo = leComando();		
+		dirigindo = mapeamento();		
 	}
-	return posAtualVetor;
+	return atualvetor;
 }
 
 
@@ -43,7 +32,7 @@ void percorre(int *v,int tamPercorrido){
 	int maiorDir = 0;
 	
 	for(int i = 0; i< tamPercorrido; i+=4){
-		char *direcao = Caminho(&(vetorMov[i]),&maiorDir);
+		const char* direcao = caminho(&(vetorMov[i]),&maiorDir);
 		printf("Movimentando para %s distancia = %i\n",direcao,maiorDir);
 	}
 }
@@ -51,10 +40,10 @@ void percorre(int *v,int tamPercorrido){
 int main(int argc, char** argv) {
 	int maxVetor = 100;
 	int vetorMov[maxVetor*4];
-	int posAtualVet = 0;
+	int atualvetor = 0;
 	
-	posAtualVet = dirige(vetorMov,maxVetor);
-	percorre(vetorMov,posAtualVet);
+	atualvetor = dirige(vetorMov,maxVetor);
+	percorre(vetorMov,atualvetor);
 	
 	return 0;
 }
